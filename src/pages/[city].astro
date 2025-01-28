@@ -1,0 +1,21 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { Cities, Opciones1 } from "../constant";
+import { Views } from "@/components/Views";
+
+export async function getStaticPaths() {
+    return Cities.map((city) => ({
+        params: { city },
+    }));
+}
+
+const { city } = Astro.params;
+
+
+---
+
+<Layout title={city}>
+    <main class="flex flex-col w-full h-full items-center gap-12">
+        <Views client:only />
+    </main>
+</Layout>

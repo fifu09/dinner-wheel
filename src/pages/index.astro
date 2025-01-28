@@ -1,0 +1,28 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { Cities } from "src/constant";
+---
+
+<Layout title="Quecomemos">
+	<main class="flex w-full h-full items-center flex-col gap-4 md:gap-10">
+		<h1>Descubre el lugar perfecto para comer hoy.</h1>
+		<h1 class="text-center text-xl">¡Déjanos sorprenderte!</h1>
+		<ul
+			class="flex flex-col w-full h-full gap-6 items-center py-8 transition-all"
+		>
+			{
+				Cities.filter((city) =>
+					city.toLocaleLowerCase().includes(city.toLowerCase()),
+				).map((city) => (
+					<a
+						class="border px-10 w-40 text-center py-1 rounded-full"
+						href={`/${city}`}
+						key={city}
+					>
+						{city}
+					</a>
+				))
+			}
+		</ul>
+	</main>
+</Layout>
